@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Registration</title>
+</head>
+<body>
+    <div id="app">
+        <component-a></component-a>
+        <component-b></component-b>
+        <component-c></component-c>
+        <component-d></component-d>
+    </div>
+    
+</body>
+
+<script>
+    Vue.component('component-a',{/*logic*/})
+    Vue.component('component-b',{/*logic*/})
+    Vue.component('component-c',{/*logic*/})
+    Vue.component('component-d',{/*logic*/})
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Registration</title>
+</head>
+<body>
+
+</body>
+<script>
+    var ComponentA = {/*logic*/}
+    var ComponentB = {
+        components: {
+            'component-a': ComponentA
+        },
+    }
+    var ComponentC = {/*logic*/}
+
+    new Vue({
+        el: '#app',
+        components: {
+            'component-a': ComponentA,
+            'component-b': ComponentB
+        }
+    })
+
+    // while using ES2015 modules, such as through Babel and Webpack, that might look more like:
+
+    import ComponentA from './ComponentA.vue'
+
+    export default {
+        components: {
+            ComponentA
+        },
+    }
+</script>
+</html>
