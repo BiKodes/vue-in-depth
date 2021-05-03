@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passing Static or Dynamic Props</title>
+</head>
+<body>
+    <!-- props passed a static -->
+        <blog-post title="My Journey With Vue"></blog-post>
+
+    <!-- props assigned dynamically with v-bind -->
+        <!-- Dynamically assign the value of a variable -->
+        <blog-post v-bind:title="post.title"></blog-post>
+        <!-- Dynamically assign the value of a complex expression -->
+        <blog-post 
+            v-bind:title="post.title + ' by ' + post.author.name">
+        </blog-post>
+
+    <!-- Passing a Number -->
+        <!--  v-bind tells Vue that this is a JavaScript expression rather than a string. -->
+        <blog-post v-bind:likes="42"></blog-post>
+        <!-- Dynamically assign to the value of a variable. -->
+        <blog-post v-bind:likes="post.likes"></blog-post>
+
+    <!-- Passing a Boolean -->
+        <!-- Including the prop with no value will imply `true`. -->
+        <blog-post isPublished></blog-post>
+
+        <!-- Even though `false` is static, we need v-bind to tell Vue that -->
+        <!-- this is a JavaScript expression rather than a string.          -->
+
+        <blog-post v-bind:isPublished="false"></blog-post>
+
+        <!-- Dynamically assign to the value of a variable. -->
+        <blog-post v-bind:is-published="post.isPublished"></blog-post>
+    
+
+    <!-- Passing an Array -->
+        <!-- Even though the array is static, we need v-bind to tell Vue that -->
+        <!-- this is a JavaScript expression rather than a string.            -->
+
+        <blog-post v-bind:comment-ids="[154, 268, 364]"></blog-post>
+
+        <!-- Dynamically assign to the value of a variable. -->
+        <blog-post v-bind:cooment-ids="post.commentIds"></blog-post>
+
+
+    <!-- Passing an Object -->
+        <!-- Even though the object is static, we need v-bind to tell Vue that -->
+        <!-- this is a JavaScript expression rather than a string.             -->
+        <blog-post 
+            v-bind:author="{
+                name: 'Biko',
+                company: 'Code Dreamics'
+            }"
+        ></blog-post>
+
+    <!-- Dynamically assign to the value of a variable. -->
+        <blog-post v-bind:auther="post.author"></blog-post>
+
+
+    <!-- Passing the Properties of an Object -->
+        
+        <blog-post v-bind="post"></blog-post>
+
+        <!-- Same as -->
+
+        <blog-post
+            v-bind:id ="post.id"
+            v-bind:title = "post.title"
+        ></blog-post>
+
+
+
+</body>
+
+<script>
+      Vue.component({
+        //  as an array of strings:
+        props: ['title', 'likes', 'isPublished', 'commentIds', 'author'],
+
+        // as an object, where the properties’ names and values contain the prop names and types, respectively:
+        props: {
+            title: String,
+            likes: Number,
+            isPublished: Boolean,
+            commentIds: Array,
+            author: Object,
+            callback: Function,
+            contactsPromise: Promise
+        },
+        props: {
+            post: {
+                id: 1,
+                title: 'My Journey With Vue'
+            }
+        }
+    })
+</script>
+</html>

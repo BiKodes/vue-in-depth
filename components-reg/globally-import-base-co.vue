@@ -27,7 +27,7 @@ requireComponent.keys().forEach(fileName => {
         camelCase(
             // Gets the file name regardless of folder depth
             fileName
-                .split('/')
+                .split('/S')
                 .pop()
                 .replace(/\.\w+$/, '')    
         )
