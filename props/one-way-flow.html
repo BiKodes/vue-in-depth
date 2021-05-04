@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Way Data Flow</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+   
+    Vue.component('blog-post',{
+        // The prop is used to pass in an initial value; the child component wants to use it 
+        // as a local data property afterwards. 
+
+        props: ['initialCounter'],
+        data: function(){
+            return {
+                counter: this.initialCounter
+            }
+        }
+    })
+
+    Vue.component({
+        // The prop is passed in as a raw value that needs to be transformed.
+        props: ['size'],
+        computed: {
+            normalizedSize: function(){
+                return this.size.trim().toLowerCase()
+            }
+        }
+    })
+</script>
+</html>
