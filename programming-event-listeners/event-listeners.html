@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Programmatic Event Listeners</title>
+</head>
+<body>
+    <div id="app">
+        <input ref="dateInput" v-model="date" type="date"/>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            date: null
+        },
+
+        mounted: function(){
+            var picker = new Pikaday({
+                field: this.$refs.dateInput,
+                format: "YYYY-MM-DD"
+            });
+
+            this.$once("hook:beforeDestroy", function(){
+                picker.destroy();
+            });
+        }
+    })
+</script>
+
+</html>
